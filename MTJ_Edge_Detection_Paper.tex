@@ -179,7 +179,7 @@ Table~\ref{tab:kernel_comparison} summarizes the performance characteristics of 
 \end{center}
 \end{table}
 
-The 3×3 kernel demonstrates the optimal F1-score of 0.847, representing the best trade-off between edge detection accuracy and computational complexity. The 2×2 kernel achieves highest energy efficiency but with reduced accuracy, while the 4×4 kernel provides enhanced edge detection quality at increased energy cost.
+The 3×3 kernel demonstrates the optimal F1-score of 0.847, representing the best trade-off between edge detection accuracy and computational complexity. The 2×2 kernel achieves highest energy efficiency but with reduced accuracy, while the 4×4 kernel provides enhanced edge detection quality at increased energy cost. Visual comparison of edge detection results across different kernel sizes is presented in Figure~\ref{fig:results1}, while detailed performance metrics are illustrated in Figure~\ref{fig:results2}.
 
 \subsection{Noise Resilience Analysis}
 
@@ -192,6 +192,24 @@ Figure~\ref{fig:noise_analysis} illustrates the noise resilience characteristics
 \end{figure}
 
 For clinical applications with typical MRI noise levels (SNR > 20 dB), the 3×3 kernel maintains robust performance while preserving energy efficiency. The 4×4 kernel becomes advantageous only in severely degraded imaging conditions (SNR < 15 dB).
+
+\subsection{Experimental Results Visualization}
+
+Figure~\ref{fig:results1} presents the detailed edge detection results for different MTJ kernel configurations applied to brain tumor MRI images, demonstrating the superior edge enhancement capabilities of the proposed approach.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.48\textwidth]{Screenshot 2025-07-12 123903.png}}
+\caption{Comparative edge detection results showing original brain tumor MRI images and processed outputs using different MTJ kernel sizes (2×2, 3×3, 4×4).}
+\label{fig:results1}
+\end{figure}
+
+Figure~\ref{fig:results2} illustrates the quantitative performance analysis and processing time comparisons across different kernel architectures, highlighting the trade-offs between accuracy and computational efficiency.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.48\textwidth]{Screenshot 2025-07-12 123917.png}}
+\caption{Performance metrics and processing time analysis for MTJ-based edge detection kernels, showing F1-scores, energy consumption, and throughput measurements.}
+\label{fig:results2}
+\end{figure}
 
 \subsection{Energy Efficiency Analysis}
 
