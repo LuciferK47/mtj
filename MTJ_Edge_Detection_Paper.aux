@@ -1,0 +1,74 @@
+\relax 
+\citation{b1}
+\citation{b2}
+\citation{b3}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {II}Device Design and Architecture}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}MTJ Device Structure}{1}{}\protected@file@percent }
+\newlabel{eq:resistance}{{1}{1}{}{equation.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}Kernel Architecture Implementation}{1}{}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}MTJ kernel implementation with device parameters}{1}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces MTJ device structure for edge detection: (a) Cross-sectional view showing ferromagnetic layers and MgO barrier with detailed layer stack, (b) Top view of MTJ array configuration for kernel implementation showing 3$\times $3 array structure, (c) Resistance states for parallel and antiparallel alignments with corresponding energy barriers, (d) Switching dynamics under spin-transfer torque showing critical current density requirements.}}{2}{}\protected@file@percent }
+\newlabel{fig:device_design}{{1}{2}{}{figure.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}LLGS Simulation and Magnetization Dynamics}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}LLGS Equation Implementation}{2}{}\protected@file@percent }
+\newlabel{eq:llgs}{{5}{2}{}{equation.5}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}LLGS equation numerical solver implementation}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}LLGS Simulation Results}{3}{}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3}Stochastic LLGS implementation with thermal effects}{3}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces LLGS simulation results showing magnetization (m) vs. time for different current densities: (a) Low current (10$^6$ A/cm$^2$) - stable state showing no switching with small precessional motion, (b) Medium current (10$^7$ A/cm$^2$) - precessional motion with damped oscillations, (c) High current (10$^8$ A/cm$^2$) - complete switching behavior. The switching time varies from 0.5 ns to 2.1 ns depending on current amplitude. (d) Phase diagram showing switching probability vs. current density and pulse duration.}}{3}{}\protected@file@percent }
+\newlabel{fig:llgs_output}{{2}{3}{}{figure.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Image-to-LSB Conversion and Preprocessing}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Bit-Plane Decomposition Strategy}{3}{}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4}Enhanced bit-plane decomposition with preprocessing}{3}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Image-to-LSB conversion process: (a) Original brain tumor MRI image (256×256 pixels) showing glioma tumor, (b) 8-bit grayscale representation with histogram equalization, (c) Complete bit-plane decomposition showing MSB to LSB planes with significance analysis, (d) Selected bit planes (6th, 7th, 8th) used for edge detection with information content analysis, (e) Binary representation suitable for MTJ processing with optimized thresholding, (f) Quality assessment metrics for each bit plane showing edge information preservation.}}{4}{}\protected@file@percent }
+\newlabel{fig:image_to_lsb}{{3}{4}{}{figure.3}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5}Adaptive bit plane selection for different image types}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {V}Edge Detection Logic and Algorithm}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}MTJ-Based Edge Detection Principle}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Comprehensive edge detection logic diagram: (a) Input pixel window with neighborhood analysis, (b) MTJ kernel weights mapping with resistance state encoding, (c) Convolution operation with current-to-resistance conversion and parallel processing, (d) Multi-threshold comparison with adaptive thresholding, (e) Edge/non-edge decision output with confidence metrics, (f) Post-processing pipeline with morphological operations and noise reduction.}}{5}{}\protected@file@percent }
+\newlabel{fig:edge_logic}{{4}{5}{}{figure.4}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6}Complete MTJ edge detection pipeline implementation}{5}{}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7}Advanced post-processing for edge preservation}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Operational Flowchart}{7}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Complete operational flowchart: Medical image input → Advanced preprocessing (CLAHE, bilateral filtering) → Bit-plane decomposition with information analysis → MTJ kernel selection with parameter optimization → Parallel edge detection with device physics simulation → Quality-driven post-processing → Comprehensive performance evaluation → Final edge-detected output. The flowchart includes decision points for kernel optimization, quality assessment, and adaptive parameter adjustment.}}{7}{}\protected@file@percent }
+\newlabel{fig:flowchart}{{5}{7}{}{figure.5}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8}Complete workflow management system}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Experimental Results: Kernel Comparison}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-A}}Edge Detection Performance Comparison}{8}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Comprehensive edge detection results comparison: (a) Original brain tumor MRI images from different categories (glioma, meningioma, pituitary) with varying contrast and noise levels, (b) Canny edge detection reference with optimized parameters, (c) 2$\times $2 MTJ kernel results showing rapid processing with good edge localization, (d) 3$\times $3 MTJ kernel results demonstrating optimal balance between accuracy and noise suppression, (e) 4$\times $4 MTJ kernel results exhibiting superior noise robustness and edge continuity. The comparison includes quantitative overlay analysis showing precision/recall trade-offs.}}{8}{}\protected@file@percent }
+\newlabel{fig:kernel_results}{{6}{8}{}{figure.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-B}}Quantitative Performance Analysis}{8}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Comprehensive MTJ Kernel Performance Analysis with Statistical Metrics}}{9}{}\protected@file@percent }
+\newlabel{tab:detailed_comparison}{{I}{9}{}{table.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {9}Performance optimization implementation}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Performance Metrics and Energy Analysis}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-A}}Comprehensive Metrics Comparison}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-B}}Energy Efficiency Analysis}{9}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Comprehensive performance metrics comparison: (a) Energy consumption analysis showing quadratic scaling with kernel size and comparison with CMOS implementations, (b) Processing latency measurements for different image sizes with scalability analysis, (c) Throughput comparison in Mpixels/second with real-time capability assessment, (d) Energy efficiency metrics (F1-score/\textmu J) demonstrating optimal operating points, (e) Overall performance radar chart showing balanced evaluation across all metrics, (f) Temperature and voltage sensitivity analysis for robust deployment.}}{10}{}\protected@file@percent }
+\newlabel{fig:metrics_comparison}{{7}{10}{}{figure.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Comprehensive Energy and Performance Analysis Results}}{10}{}\protected@file@percent }
+\newlabel{tab:energy_analysis}{{II}{10}{}{table.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {10}Comprehensive energy consumption calculation with device modeling}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {IX}Implementation Challenges and Solutions}{11}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IX-A}}Technical Challenges Addressed}{11}{}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {11}Advanced adaptive thresholding solution with multi-modal analysis}{11}{}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {12}Multi-scale noise reduction with edge preservation}{12}{}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {13}Intelligent fallback system with performance monitoring}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {X}Clinical Applications and Future Work}{14}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {X-A}}Medical Imaging Applications}{14}{}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {14}Multi-modal adaptation implementation}{14}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {X-B}}Future Research Directions}{14}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {XI}Conclusion}{14}{}\protected@file@percent }
+\bibcite{b1}{1}
+\bibcite{b2}{2}
+\bibcite{b3}{3}
+\bibcite{b4}{4}
+\bibcite{b5}{5}
+\bibcite{b6}{6}
+\bibcite{b7}{7}
+\bibcite{b8}{8}
+\bibcite{b9}{9}
+\bibcite{b10}{10}
+\@writefile{toc}{\contentsline {section}{References}{15}{}\protected@file@percent }
+\gdef \@abspage@last{15}

@@ -2,6 +2,7 @@
 \IEEEoverridecommandlockouts
 % Template version as of 6/27/2024
 
+\usepackage[utf8]{inputenc}
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
@@ -12,6 +13,17 @@
 \usepackage{listings}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,positioning}
+
+% Unicode character declarations for superscripts and special symbols
+\DeclareUnicodeCharacter{207B}{$^{-}$}
+\DeclareUnicodeCharacter{2076}{$^{6}$}
+\DeclareUnicodeCharacter{2077}{$^{7}$}
+\DeclareUnicodeCharacter{2078}{$^{8}$}
+\DeclareUnicodeCharacter{2070}{$^{0}$}
+\DeclareUnicodeCharacter{00B1}{\textpm}
+\DeclareUnicodeCharacter{00B5}{\textmu}
+\DeclareUnicodeCharacter{00D7}{\texttimes}
+
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
@@ -28,7 +40,9 @@
     numbers=left,
     numberstyle=\tiny\color{gray},
     stepnumber=1,
-    numbersep=5pt
+    numbersep=5pt,
+    inputencoding=utf8,
+    extendedchars=true
 }
 
 \begin{document}
@@ -57,7 +71,7 @@ email@university.edu}
 \maketitle
 
 \begin{abstract}
-This paper presents a comprehensive spintronic-based edge detection methodology utilizing Magnetic Tunnel Junction (MTJ) devices for medical image processing applications. The proposed approach leverages the Landau-Lifshitz-Gilbert-Slonczewski (LLGS) equation to simulate MTJ switching dynamics, enabling efficient edge detection with superior energy characteristics compared to conventional CMOS implementations. We systematically evaluate three kernel architectures (2×2, 3×3, and 4×4) using brain tumor MRI datasets, analyzing performance metrics, energy efficiency, and processing throughput. Our experimental results demonstrate that the 3×3 MTJ kernel achieves optimal balance between edge detection accuracy (F1-score: 0.847) and energy efficiency (2.76 × 10⁻⁶), while the 4×4 configuration provides enhanced noise resilience for degraded imaging conditions. The proposed MTJ-based approach shows processing speeds up to 3.26 × 10⁶ pixels/second with 10× improvement in energy efficiency compared to CMOS implementations.
+This paper presents a comprehensive spintronic-based edge detection methodology utilizing Magnetic Tunnel Junction (MTJ) devices for medical image processing applications. The proposed approach leverages the Landau-Lifshitz-Gilbert-Slonczewski (LLGS) equation to simulate MTJ switching dynamics, enabling efficient edge detection with superior energy characteristics compared to conventional CMOS implementations. We systematically evaluate three kernel architectures (2$\times$2, 3$\times$3, and 4$\times$4) using brain tumor MRI datasets, analyzing performance metrics, energy efficiency, and processing throughput. Our experimental results demonstrate that the 3$\times$3 MTJ kernel achieves optimal balance between edge detection accuracy (F1-score: 0.847) and energy efficiency (2.76 $\times$ 10$^{-6}$), while the 4$\times$4 configuration provides enhanced noise resilience for degraded imaging conditions. The proposed MTJ-based approach shows processing speeds up to 3.26 $\times$ 10$^{6}$ pixels/second with 10$\times$ improvement in energy efficiency compared to CMOS implementations.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -82,7 +96,7 @@ Figure~\ref{fig:device_design} illustrates the comprehensive MTJ device structur
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=0.45\textwidth]{device_schematic.png}}
-\caption{MTJ device structure for edge detection: (a) Cross-sectional view showing ferromagnetic layers and MgO barrier with detailed layer stack, (b) Top view of MTJ array configuration for kernel implementation showing 3×3 array structure, (c) Resistance states for parallel and antiparallel alignments with corresponding energy barriers, (d) Switching dynamics under spin-transfer torque showing critical current density requirements.}
+\caption{MTJ device structure for edge detection: (a) Cross-sectional view showing ferromagnetic layers and MgO barrier with detailed layer stack, (b) Top view of MTJ array configuration for kernel implementation showing 3$\times$3 array structure, (c) Resistance states for parallel and antiparallel alignments with corresponding energy barriers, (d) Switching dynamics under spin-transfer torque showing critical current density requirements.}
 \label{fig:device_design}
 \end{figure}
 
@@ -92,7 +106,7 @@ R(\theta) = R_P + \frac{R_{AP} - R_P}{2}(1 - \cos\theta)
 \label{eq:resistance}
 \end{equation}
 
-where $\theta$ is the angle between magnetization vectors, $R_P$ and $R_{AP}$ are the parallel and antiparallel resistances, respectively. Our design uses realistic parameters: free layer dimensions of 40 nm × 40 nm × 1.5 nm, TMR ratio of 150\%, thermal stability factor $\Delta = 60$, and critical switching current density $J_c = 5 \times 10^7$ A/cm².
+where $\theta$ is the angle between magnetization vectors, $R_P$ and $R_{AP}$ are the parallel and antiparallel resistances, respectively. Our design uses realistic parameters: free layer dimensions of 40 nm $\times$ 40 nm $\times$ 1.5 nm, TMR ratio of 150\%, thermal stability factor $\Delta = 60$, and critical switching current density $J_c = 5 \times 10^7$ A/cm$^2$.
 
 \subsection{Kernel Architecture Implementation}
 
@@ -106,10 +120,10 @@ def initialize_mtj_kernels():
         'R_P': 1000,      # Parallel resistance (Ohms)
         'R_AP': 2500,     # Antiparallel resistance (Ohms) 
         'TMR': 150,       # TMR ratio (%)
-        'J_c': 5e7,       # Critical current density (A/cm²)
+        'J_c': 5e7,       # Critical current density (A/cm^2)
         'thermal_stability': 60,  # kT units
         'switching_time': 2.1e-9,  # seconds
-        'device_area': 1.6e-12     # m² (40nm × 40nm)
+        'device_area': 1.6e-12     # m^2 (40nm x 40nm)
     }
     
     # Kernel configurations optimized for MTJ implementation
@@ -127,19 +141,19 @@ def initialize_mtj_kernels():
 
 The three kernel architectures investigated are designed with specific MTJ resistance mapping:
 
-\textbf{2×2 Kernel Configuration:}
+\textbf{2$\times$2 Kernel Configuration:}
 \begin{equation}
-K_{2×2} = \begin{bmatrix} -1 & 1 \\ 1 & -1 \end{bmatrix}
+K_{2 \times 2} = \begin{bmatrix} -1 & 1 \\ 1 & -1 \end{bmatrix}
 \end{equation}
 
-\textbf{3×3 Kernel Configuration:}
+\textbf{3$\times$3 Kernel Configuration:}
 \begin{equation}
-K_{3×3} = \begin{bmatrix} -1 & -1 & -1 \\ -1 & 8 & -1 \\ -1 & -1 & -1 \end{bmatrix}
+K_{3 \times 3} = \begin{bmatrix} -1 & -1 & -1 \\ -1 & 8 & -1 \\ -1 & -1 & -1 \end{bmatrix}
 \end{equation}
 
-\textbf{4×4 Kernel Configuration:}
+\textbf{4$\times$4 Kernel Configuration:}
 \begin{equation}
-K_{4×4} = \begin{bmatrix} -1 & -1 & -1 & -1 \\ -1 & 2 & 2 & -1 \\ -1 & 2 & 8 & -1 \\ -1 & -1 & -1 & -1 \end{bmatrix}
+K_{4 \times 4} = \begin{bmatrix} -1 & -1 & -1 & -1 \\ -1 & 2 & 2 & -1 \\ -1 & 2 & 8 & -1 \\ -1 & -1 & -1 & -1 \end{bmatrix}
 \end{equation}
 
 \section{LLGS Simulation and Magnetization Dynamics}
@@ -153,7 +167,7 @@ The magnetization dynamics of the MTJ free layer are governed by the LLGS equati
 \label{eq:llgs}
 \end{equation}
 
-where $\vec{m}$ is the normalized magnetization vector, $\gamma$ is the gyromagnetic ratio (2.8 × 10¹⁰ rad·s⁻¹·T⁻¹), $\vec{H}_{eff}$ is the effective magnetic field, $\alpha$ is the Gilbert damping parameter (0.01), and $\tau_{STT}$ represents the spin-transfer torque term.
+where $\vec{m}$ is the normalized magnetization vector, $\gamma$ is the gyromagnetic ratio (2.8 × 10$^{10}$ rad·s$^{-1}$·T$^{-1}$), $\vec{H}_{eff}$ is the effective magnetic field, $\alpha$ is the Gilbert damping parameter (0.01), and $\tau_{STT}$ represents the spin-transfer torque term.
 
 The numerical implementation of the LLGS equation is critical for accurate MTJ behavior modeling:
 
@@ -163,7 +177,7 @@ def solve_llgs_equation(current_density, time_steps=1000, dt=1e-12):
     Solve LLGS equation for MTJ magnetization dynamics.
     
     Parameters:
-    - current_density: Applied current density (A/cm²)
+    - current_density: Applied current density (A/cm^2)
     - time_steps: Number of simulation steps  
     - dt: Time step size (seconds)
     
@@ -178,7 +192,7 @@ def solve_llgs_equation(current_density, time_steps=1000, dt=1e-12):
     # MTJ parameters
     Ms = 1.4e6      # Saturation magnetization (A/m)
     thickness = 1.5e-9  # Free layer thickness (m)
-    area = 1.6e-12  # Device area (m²)
+    area = 1.6e-12  # Device area (m^2)
     
     # Initialize magnetization (initially parallel state)
     m = np.array([0.0, 0.0, 1.0])  # Normalized magnetization
@@ -233,16 +247,16 @@ Figure~\ref{fig:llgs_output} shows the magnetization dynamics (m vs. time) obtai
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=0.45\textwidth]{llgs_simulation.png}}
-\caption{LLGS simulation results showing magnetization (m) vs. time for different current densities: (a) Low current (10⁶ A/cm²) - stable state showing no switching with small precessional motion, (b) Medium current (10⁷ A/cm²) - precessional motion with damped oscillations, (c) High current (10⁸ A/cm²) - complete switching behavior. The switching time varies from 0.5 ns to 2.1 ns depending on current amplitude. (d) Phase diagram showing switching probability vs. current density and pulse duration.}
+\caption{LLGS simulation results showing magnetization (m) vs. time for different current densities: (a) Low current (10$^6$ A/cm$^2$) - stable state showing no switching with small precessional motion, (b) Medium current (10$^7$ A/cm$^2$) - precessional motion with damped oscillations, (c) High current (10$^8$ A/cm$^2$) - complete switching behavior. The switching time varies from 0.5 ns to 2.1 ns depending on current amplitude. (d) Phase diagram showing switching probability vs. current density and pulse duration.}
 \label{fig:llgs_output}
 \end{figure}
 
 The simulation reveals three distinct operational regimes that directly map to edge detection sensitivity:
 
 \begin{itemize}
-\item \textbf{Stable regime} (J < 10⁶ A/cm²): Magnetization remains in initial state, corresponding to uniform image regions
-\item \textbf{Precessional regime} (10⁶ < J < 5×10⁷ A/cm²): Magnetization exhibits oscillatory behavior, suitable for weak edge detection
-\item \textbf{Switching regime} (J > 5×10⁷ A/cm²): Complete magnetization reversal occurs, indicating strong edges
+\item \textbf{Stable regime} (J < 10$^6$ A/cm$^2$): Magnetization remains in initial state, corresponding to uniform image regions
+\item \textbf{Precessional regime} (10$^6$ < J < 5$\times$10$^7$ A/cm$^2$): Magnetization exhibits oscillatory behavior, suitable for weak edge detection
+\item \textbf{Switching regime} (J > 5$\times$10$^7$ A/cm$^2$): Complete magnetization reversal occurs, indicating strong edges
 \end{itemize}
 
 The switching characteristics directly influence the edge detection sensitivity, with faster switching enabling better temporal resolution for real-time processing. The implementation includes stochastic effects:
@@ -504,9 +518,9 @@ def mtj_convolution(image, kernel, mtj_params):
     
     # Current calculation based on input voltage (normalized pixel values)
     voltage = image / 255.0 * 1.0  # Normalize to 1V max
-    current_map = voltage / resistance_map * 1e6  # Convert to µA
+    current_map = voltage / resistance_map * 1e6  # Convert to microA
     
-    # Apply realistic device variations (±5% resistance variation)
+    # Apply realistic device variations (+/-5% resistance variation)
     variation = np.random.normal(1.0, 0.05, convolved.shape)
     convolved_realistic = convolved * variation
     
@@ -577,7 +591,7 @@ def apply_hysteresis_thresholding(convolved, threshold, kernel_size):
    \end{equation}
    where $\alpha$ and $\beta$ are kernel-specific factors optimized for medical imaging.
 
-3. \textbf{Edge Classification with Hysteresis**: Dual-threshold approach prevents edge fragmentation:
+3. \textbf{Edge Classification with Hysteresis}: Dual-threshold approach prevents edge fragmentation:
    \begin{equation}
    E(x,y) = \begin{cases} 
    255 & \text{if } |C(x,y)| > T_{high} \\
@@ -586,7 +600,7 @@ def apply_hysteresis_thresholding(convolved, threshold, kernel_size):
    \end{cases}
    \end{equation}
 
-4. \textbf{Advanced Post-processing**: Morphological operations with edge preservation:
+4. \textbf{Advanced Post-processing}: Morphological operations with edge preservation:
 
 \begin{lstlisting}[caption={Advanced post-processing for edge preservation}]
 def advanced_post_processing(edges, kernel_size):
@@ -653,7 +667,7 @@ def execute_complete_workflow(medical_images, output_directory):
         image_results = {}
         
         for kernel_size in kernel_sizes:
-            print(f"  → Processing with {kernel_size}×{kernel_size} kernel...")
+            print(f"  -> Processing with {kernel_size}x{kernel_size} kernel...")
             
             # Execute MTJ edge detection
             edges, metrics, stats = comprehensive_mtj_edge_detection(
@@ -767,7 +781,7 @@ Figure~\ref{fig:kernel_results} shows the comprehensive edge detection results f
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=0.48\textwidth]{Screenshot 2025-07-12 123903.png}}
-\caption{Comprehensive edge detection results comparison: (a) Original brain tumor MRI images from different categories (glioma, meningioma, pituitary) with varying contrast and noise levels, (b) Canny edge detection reference with optimized parameters, (c) 2×2 MTJ kernel results showing rapid processing with good edge localization, (d) 3×3 MTJ kernel results demonstrating optimal balance between accuracy and noise suppression, (e) 4×4 MTJ kernel results exhibiting superior noise robustness and edge continuity. The comparison includes quantitative overlay analysis showing precision/recall trade-offs.}
+\caption{Comprehensive edge detection results comparison: (a) Original brain tumor MRI images from different categories (glioma, meningioma, pituitary) with varying contrast and noise levels, (b) Canny edge detection reference with optimized parameters, (c) 2$\times$2 MTJ kernel results showing rapid processing with good edge localization, (d) 3$\times$3 MTJ kernel results demonstrating optimal balance between accuracy and noise suppression, (e) 4$\times$4 MTJ kernel results exhibiting superior noise robustness and edge continuity. The comparison includes quantitative overlay analysis showing precision/recall trade-offs.}
 \label{fig:kernel_results}
 \end{figure}
 
@@ -781,13 +795,13 @@ Table~\ref{tab:detailed_comparison} presents comprehensive performance metrics f
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
 \textbf{Kernel} & \textbf{F1-Score} & \textbf{Precision} & \textbf{Recall} & \textbf{Edge} & \textbf{SSIM} & \textbf{Connectivity} \\
-\textbf{Size} & \textbf{(±σ)} & \textbf{(±σ)} & \textbf{(±σ)} & \textbf{Density} & & \textbf{Index} \\
+\textbf{Size} & \textbf{($\pm\sigma$)} & \textbf{($\pm\sigma$)} & \textbf{($\pm\sigma$)} & \textbf{Density} & & \textbf{Index} \\
 \hline
-2×2 & 0.753±0.023 & 0.689±0.031 & 0.834±0.019 & 0.127 & 0.721 & 0.845 \\
+2$\times$2 & 0.753$\pm$0.023 & 0.689$\pm$0.031 & 0.834$\pm$0.019 & 0.127 & 0.721 & 0.845 \\
 \hline
-3×3 & 0.847±0.015 & 0.823±0.021 & 0.872±0.018 & 0.094 & 0.836 & 0.912 \\
+3$\times$3 & 0.847$\pm$0.015 & 0.823$\pm$0.021 & 0.872$\pm$0.018 & 0.094 & 0.836 & 0.912 \\
 \hline
-4×4 & 0.821±0.018 & 0.791±0.024 & 0.853±0.022 & 0.078 & 0.803 & 0.891 \\
+4$\times$4 & 0.821$\pm$0.018 & 0.791$\pm$0.024 & 0.853$\pm$0.022 & 0.078 & 0.803 & 0.891 \\
 \hline
 \textbf{Canny Ref.} & \textbf{1.000} & \textbf{1.000} & \textbf{1.000} & \textbf{0.112} & \textbf{1.000} & \textbf{1.000} \\
 \hline
@@ -800,11 +814,11 @@ Table~\ref{tab:detailed_comparison} presents comprehensive performance metrics f
 
 The comprehensive implementation reveals several critical insights:
 
-1. \textbf{3×3 Kernel Superiority}: Achieves highest F1-score (0.847±0.015) with excellent precision-recall balance, making it optimal for clinical applications requiring high accuracy. The small standard deviation indicates consistent performance across different image types.
+1. \textbf{3$\times$3 Kernel Superiority}: Achieves highest F1-score (0.847$\pm$0.015) with excellent precision-recall balance, making it optimal for clinical applications requiring high accuracy. The small standard deviation indicates consistent performance across different image types.
 
-2. \textbf{2×2 Kernel Efficiency**: Provides fastest processing (4.89 Mpx/s) with acceptable accuracy for screening applications where speed is prioritized over precision.
+2. \textbf{2$\times$2 Kernel Efficiency}: Provides fastest processing (4.89 Mpx/s) with acceptable accuracy for screening applications where speed is prioritized over precision.
 
-3. \textbf{4×4 Kernel Robustness**: Demonstrates superior performance in noisy conditions (SNR < 15 dB) due to larger spatial support, though at increased computational cost.
+3. \textbf{4$\times$4 Kernel Robustness}: Demonstrates superior performance in noisy conditions (SNR < 15 dB) due to larger spatial support, though at increased computational cost.
 
 The detailed implementation includes performance optimization techniques:
 
@@ -894,7 +908,7 @@ Figure~\ref{fig:metrics_comparison} presents detailed performance metrics compar
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=0.48\textwidth]{Screenshot 2025-07-12 123917.png}}
-\caption{Comprehensive performance metrics comparison: (a) Energy consumption analysis showing quadratic scaling with kernel size and comparison with CMOS implementations, (b) Processing latency measurements for different image sizes with scalability analysis, (c) Throughput comparison in Mpixels/second with real-time capability assessment, (d) Energy efficiency metrics (F1-score/μJ) demonstrating optimal operating points, (e) Overall performance radar chart showing balanced evaluation across all metrics, (f) Temperature and voltage sensitivity analysis for robust deployment.}
+\caption{Comprehensive performance metrics comparison: (a) Energy consumption analysis showing quadratic scaling with kernel size and comparison with CMOS implementations, (b) Processing latency measurements for different image sizes with scalability analysis, (c) Throughput comparison in Mpixels/second with real-time capability assessment, (d) Energy efficiency metrics (F1-score/\textmu J) demonstrating optimal operating points, (e) Overall performance radar chart showing balanced evaluation across all metrics, (f) Temperature and voltage sensitivity analysis for robust deployment.}
 \label{fig:metrics_comparison}
 \end{figure}
 
@@ -908,15 +922,15 @@ Table~\ref{tab:energy_analysis} provides detailed energy and performance charact
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
 \textbf{Kernel} & \textbf{Energy} & \textbf{Latency} & \textbf{Throughput} & \textbf{Efficiency} & \textbf{Power} \\
-\textbf{Size} & \textbf{(nJ)} & \textbf{(ms)} & \textbf{(Mpx/s)} & \textbf{(×10⁻⁶)} & \textbf{(mW)} \\
+\textbf{Size} & \textbf{(nJ)} & \textbf{(ms)} & \textbf{(Mpx/s)} & \textbf{($\times$10$^{-6}$)} & \textbf{(mW)} \\
 \hline
-2×2 & 204.8±12.3 & 13.4±0.8 & 4.89±0.12 & 3.68±0.15 & 15.3±0.9 \\
+2$\times$2 & 204.8$\pm$12.3 & 13.4$\pm$0.8 & 4.89$\pm$0.12 & 3.68$\pm$0.15 & 15.3$\pm$0.9 \\
 \hline
-3×3 & 307.2±18.7 & 20.1±1.2 & 3.26±0.09 & 2.76±0.11 & 15.3±1.1 \\
+3$\times$3 & 307.2$\pm$18.7 & 20.1$\pm$1.2 & 3.26$\pm$0.09 & 2.76$\pm$0.11 & 15.3$\pm$1.1 \\
 \hline
-4×4 & 512.0±31.2 & 33.6±2.1 & 1.95±0.08 & 1.60±0.09 & 15.2±1.3 \\
+4$\times$4 & 512.0$\pm$31.2 & 33.6$\pm$2.1 & 1.95$\pm$0.08 & 1.60$\pm$0.09 & 15.2$\pm$1.3 \\
 \hline
-\textbf{CMOS Ref.} & \textbf{2048±156} & \textbf{45.2±3.4} & \textbf{1.45±0.11} & \textbf{0.41±0.03} & \textbf{45.3±3.2} \\
+\textbf{CMOS Ref.} & \textbf{2048$\pm$156} & \textbf{45.2$\pm$3.4} & \textbf{1.45$\pm$0.11} & \textbf{0.41$\pm$0.03} & \textbf{45.3$\pm$3.2} \\
 \hline
 \end{tabular}
 \label{tab:energy_analysis}
@@ -1054,17 +1068,17 @@ def generate_energy_efficiency_analysis(all_results):
     return efficiency_analysis
 \end{lstlisting}
 
-\textbf{Key Performance Insights from Implementation:**
+\textbf{Key Performance Insights from Implementation:}
 
-1. \textbf{Energy Scaling**: Energy consumption follows approximately quadratic scaling (O(k²)) with kernel size due to increased computational complexity, but remains 10× more efficient than CMOS implementations.
+1. \textbf{Energy Scaling}: Energy consumption follows approximately quadratic scaling (O(k$^2$)) with kernel size due to increased computational complexity, but remains 10$\times$ more efficient than CMOS implementations.
 
-2. \textbf{Throughput Trade-off**: Larger kernels provide better accuracy but at reduced processing speed. However, all configurations maintain real-time capability for medical imaging applications.
+2. \textbf{Throughput Trade-off}: Larger kernels provide better accuracy but at reduced processing speed. However, all configurations maintain real-time capability for medical imaging applications.
 
-3. \textbf{Efficiency Optimization**: 2×2 kernel offers highest energy efficiency (3.68 × 10⁻⁶), while 3×3 provides best overall balance between accuracy and efficiency.
+3. \textbf{Efficiency Optimization}: 2$\times$2 kernel offers highest energy efficiency (3.68 $\times$ 10$^{-6}$), while 3$\times$3 provides best overall balance between accuracy and efficiency.
 
-4. \textbf{Real-time Capability**: All configurations support real-time processing (>1 Mpx/s) for standard medical imaging applications with 256×256 pixel resolution.
+4. \textbf{Real-time Capability}: All configurations support real-time processing (>1 Mpx/s) for standard medical imaging applications with 256$\times$256 pixel resolution.
 
-5. \textbf{Temperature Robustness**: MTJ devices maintain stable operation across clinical temperature ranges (15-40°C) with less than 5% performance variation.
+5. \textbf{Temperature Robustness}: MTJ devices maintain stable operation across clinical temperature ranges (15-40$^\circ$C) with less than 5\% performance variation.
 
 \section{Implementation Challenges and Solutions}
 
@@ -1072,7 +1086,7 @@ def generate_energy_efficiency_analysis(all_results):
 
 Our comprehensive implementation addressed several critical challenges with innovative solutions:
 
-\textbf{1. Optimized Threshold Calculation for 4×4 Kernel:}
+\textbf{1. Optimized Threshold Calculation for 4$\times$4 Kernel:}
 \begin{lstlisting}[caption={Advanced adaptive thresholding solution with multi-modal analysis}]
 def advanced_adaptive_thresholding(convolved, kernel_size, image_stats):
     """
@@ -1404,11 +1418,11 @@ def adapt_to_imaging_modality(image, modality_type):
 
 \section{Conclusion}
 
-This work presents the first comprehensive implementation and evaluation of MTJ-based edge detection for medical imaging applications. The systematic comparison of 2×2, 3×3, and 4×4 kernel architectures reveals that the 3×3 configuration provides optimal balance between accuracy (F1-score: 0.847±0.015) and energy efficiency (2.76 × 10⁻⁶). 
+This work presents the first comprehensive implementation and evaluation of MTJ-based edge detection for medical imaging applications. The systematic comparison of 2$\times$2, 3$\times$3, and 4$\times$4 kernel architectures reveals that the 3$\times$3 configuration provides optimal balance between accuracy (F1-score: 0.847$\pm$0.015) and energy efficiency (2.76 $\times$ 10$^{-6}$). 
 
 Key implementation contributions include: (1) Optimized bit-plane decomposition with information content analysis, (2) Advanced adaptive thresholding algorithms with multi-modal threshold estimation, (3) Robust post-processing techniques ensuring reliable performance across diverse medical imaging conditions, and (4) Comprehensive fallback systems for clinical deployment reliability.
 
-The 10× improvement in energy efficiency compared to CMOS implementations, combined with real-time processing capabilities exceeding 3 Mpx/s, demonstrates significant potential for next-generation medical imaging systems. The comprehensive methodology, from device design through performance evaluation, establishes a foundation for spintronic computing in medical applications and provides a validated framework for future research in this emerging field.
+The 10$\times$ improvement in energy efficiency compared to CMOS implementations, combined with real-time processing capabilities exceeding 3 Mpx/s, demonstrates significant potential for next-generation medical imaging systems. The comprehensive methodology, from device design through performance evaluation, establishes a foundation for spintronic computing in medical applications and provides a validated framework for future research in this emerging field.
 
 Statistical analysis confirms significant performance differences between kernel architectures (p < 0.01), validating the selection criteria for clinical applications. The implementation addresses practical deployment challenges through intelligent fallback systems and adaptive parameter optimization, ensuring robust performance in clinical environments.
 
